@@ -11,9 +11,9 @@ class Content {
   const Content({
     required this.name,
     required this.imageUrl,
-    required this.titleImageUrl,
-    required this.videoUrl,
-    required this.description,
-    required this.color,
+    this.titleImageUrl = 'null',
+    this.videoUrl = 'null',
+    this.description = 'null',
+    this.color = Colors.transparent,
   });
 }
