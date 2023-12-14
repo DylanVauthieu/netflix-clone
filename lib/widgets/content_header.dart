@@ -52,17 +52,56 @@ class ContentHeader extends StatelessWidget {
               VerticalIconButton(
                 icon: Icons.add,
                 title: 'List',
-                onTap: () => print('MyList'),
+                onTap: () => print('Add to list'),
               ),
+              const _PlayButton(title: 'Play', iconname: Icons.play_arrow),
               VerticalIconButton(
                 icon: Icons.info_outline,
-                title: 'List',
-                onTap: () => print('MyList'),
+                title: 'Info',
+                onTap: () => print('Info'),
               ),
             ],
           ),
         ),
       ],
+    );
+  }
+}
+
+class _PlayButton extends StatelessWidget {
+  final String title;
+  final IconData iconname;
+
+  const _PlayButton({
+    Key? key,
+    required this.title,
+    required this.iconname,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton.icon(
+      onPressed: () => print('Play button'),
+      icon: Icon(
+        iconname,
+        color: Colors.black,
+        size: 30.0,
+      ),
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(0.0),
+        ),
+        shadowColor: const Color.fromRGBO(0, 0, 0, 0),
+      ),
+      label: Text(
+        title,
+        style: const TextStyle(
+          color: Colors.black,
+          fontSize: 16.0,
+          fontWeight: FontWeight.w600,
+        ),
+      ),
     );
   }
 }
