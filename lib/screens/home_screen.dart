@@ -52,7 +52,13 @@ class _HomeScreenState extends State<HomeScreen> {
         slivers: const [
           SliverToBoxAdapter(
             child: ContentHeader(featureContent: sintelContent),
-          )
+          ),
+          SliverToBoxAdapter(
+            child: Preview(
+              title: 'Previews',
+              contentList: previews,
+            ),
+          ),
         ],
       ),
     );

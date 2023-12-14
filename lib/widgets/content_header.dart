@@ -54,7 +54,10 @@ class ContentHeader extends StatelessWidget {
                 title: 'List',
                 onTap: () => print('Add to list'),
               ),
-              const _PlayButton(title: 'Play', iconname: Icons.play_arrow),
+              const _PlayButton(
+                title: 'Play',
+                iconname: Icons.play_arrow
+              ),
               VerticalIconButton(
                 icon: Icons.info_outline,
                 title: 'Info',
