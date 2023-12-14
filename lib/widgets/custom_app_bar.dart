@@ -1,10 +1,14 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-
 import 'package:netflix_clone/assets.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key});
+  final double scrollOffset;
+
+  const CustomAppBar({
+    Key? key,
+    this.scrollOffset = 0.0,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,27 +17,31 @@ class CustomAppBar extends StatelessWidget {
         vertical: 10.0,
         horizontal: 24.0,
       ),
-      color: Colors.orange,
+      color:
+        Colors.black.withOpacity((scrollOffset / 350).clamp(0, 1).toDouble()),
       child: SafeArea(
         child: Row(
           children: [
             Image.asset(Assets.netflixLogo0),
             const SizedBox(width: 12.0),
-            Row(
-              children: [
-                _AppBarButton(
-                  title: 'TV Shows',
-                  onTaps: () => print('TV Shows')
-                ),
-                _AppBarButton(
-                  title: 'Movies',
-                  onTaps: () => print('Movies')
-                ),
-                _AppBarButton(
-                  title: 'My list',
-                  onTaps: () => print('My list')
-                ),
-              ],
+            Expanded(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  _AppBarButton(
+                    title: 'TV Shows',
+                    onTaps: () => print('TV Shows')
+                  ),
+                  _AppBarButton(
+                    title: 'Movies',
+                    onTaps: () => print('Movies')
+                  ),
+                  _AppBarButton(
+                    title: 'My list',
+                    onTaps: () => print('My list')
+                  ),
+                ],
+              ),
             )
           ]
         ),
