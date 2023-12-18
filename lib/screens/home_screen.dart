@@ -45,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       appBar: PreferredSize(
         preferredSize: Size(screenSize.width, 50.0),
-        child: const CustomAppBar(),
+        child: CustomAppBar(scrollOffset: _scrollOffset),
       ),
       body: CustomScrollView(
         controller: _scrollController,
