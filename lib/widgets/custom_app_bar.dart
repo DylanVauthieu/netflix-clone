@@ -111,7 +111,7 @@ class _CustomAppBarDesktop extends StatelessWidget {
               children: [
                 IconButton(
                   padding: EdgeInsets.zero,
-                  icon: Icon(Icons.search),
+                  icon: const Icon(Icons.search),
                   iconSize: 28.0,
                   color: Colors.white,
                   onPressed: () => print('Search'),
@@ -130,14 +130,14 @@ class _CustomAppBarDesktop extends StatelessWidget {
                 ),
                 IconButton(
                   padding: EdgeInsets.zero,
-                  icon: Icon(Icons.card_giftcard),
+                  icon: const Icon(Icons.card_giftcard),
                   iconSize: 28.0,
                   color: Colors.white,
                   onPressed: () => print('Gift'),
                 ),
                 IconButton(
                   padding: EdgeInsets.zero,
-                  icon: Icon(Icons.notifications),
+                  icon: const Icon(Icons.notifications),
                   iconSize: 28.0,
                   color: Colors.white,
                   onPressed: () => print('Notifications'),
