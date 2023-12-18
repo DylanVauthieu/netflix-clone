@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netflix_clone/screens/home_screen.dart';
+import '../cubits/cubits.dart';
 
 class NavScreen extends StatefulWidget {
   const NavScreen({super.key});
@@ -10,11 +12,11 @@ class NavScreen extends StatefulWidget {
 
 class _NavScreenState extends State<NavScreen> {
   final List<Widget> _screens =  [
-    HomeScreen(key: PageStorageKey('HomeScreen')),
-    Scaffold(),
-    Scaffold(),
-    Scaffold(),
-    Scaffold(),
+    const HomeScreen(key: PageStorageKey('HomeScreen')),
+    const Scaffold(),
+    const Scaffold(),
+    const Scaffold(),
+    const Scaffold(),
   ];
 
   final Map<String, IconData> _icons = const {
@@ -30,7 +32,10 @@ class _NavScreenState extends State<NavScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _screens[_currentIndex],
+      body: BlocProvider<AppBarCubit>(
+        create: (_) => AppBarCubit(),
+        child: _screens[_currentIndex]
+      ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.black,

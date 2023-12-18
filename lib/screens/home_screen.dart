@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:netflix_clone/cubits/cubits.dart';
 import 'package:netflix_clone/data/data.dart';
 import 'package:netflix_clone/widgets/widgets.dart';
 
@@ -13,15 +15,12 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late ScrollController _scrollController;
-  double _scrollOffset = 0.0;
 
   @override
   void initState() {
     _scrollController = ScrollController()
       ..addListener(() {
-        setState(() {
-          _scrollOffset = _scrollController.offset;
-        });
+        BlocProvider.of<AppBarCubit>(context).setOffset(_scrollController.offset);
     });
     super.initState();
   }
@@ -47,7 +46,11 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       appBar: PreferredSize(
         preferredSize: Size(screenSize.width, 50.0),
-        child: CustomAppBar(scrollOffset: _scrollOffset),
+        child: BlocBuilder<AppBarCubit, double>(
+          builder: (context, scrollOffset) {
+            return CustomAppBar(scrollOffset: scrollOffset);
+          },
+        ),
       ),
       body: CustomScrollView(
         controller: _scrollController,
