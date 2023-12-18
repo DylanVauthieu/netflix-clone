@@ -109,11 +109,13 @@ const List<Content> myList = [
 ];
 
 const List<Content> originals = [
+  Content(name: "The One Piece", imageUrl: Assets.onePiece),
   Content(name: 'Stranger Things', imageUrl: Assets.strangerThings),
   Content(name: 'The Witcher', imageUrl: Assets.witcher),
   Content(name: 'The Umbrella Academy', imageUrl: Assets.umbrellaAcademy),
   Content(name: '13 Reasons Why', imageUrl: Assets.thirteenReasonsWhy),
   Content(name: 'The End of the F***ing World', imageUrl: Assets.teotfw),
+  Content(name: "The One Piece", imageUrl: Assets.onePiece),
   Content(name: 'Stranger Things', imageUrl: Assets.strangerThings),
   Content(name: 'The Witcher', imageUrl: Assets.witcher),
   Content(name: 'The Umbrella Academy', imageUrl: Assets.umbrellaAcademy),
