@@ -38,11 +38,9 @@ class _ContentHeaderMobile extends StatelessWidget {
         Container(
           height: 500.0,
           decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(featureContent.imageUrl),
-              fit: BoxFit.cover
-            )
-          ),
+              image: DecorationImage(
+                  image: AssetImage(featureContent.imageUrl),
+                  fit: BoxFit.cover)),
         ),
         Container(
           height: 500.0,
@@ -73,10 +71,7 @@ class _ContentHeaderMobile extends StatelessWidget {
                 title: 'List',
                 onTap: () => print('Add to list'),
               ),
-              const _PlayButton(
-                title: 'Play',
-                iconname: Icons.play_arrow
-              ),
+              const _PlayButton(title: 'Play', iconname: Icons.play_arrow),
               VerticalIconButton(
                 icon: Icons.info_outline,
                 title: 'Info',
@@ -111,9 +106,10 @@ class _ContentHeaderDesktopState extends State<_ContentHeaderDesktop> {
     super.initState();
     _videoPlayerController = VideoPlayerController.networkUrl(
       Uri.parse(widget.featureContent.videoUrl),
-    )..initialize().then((_) => setState(() {}))
-    ..setVolume(0)
-    ..play();
+    )
+      ..initialize().then((_) => setState(() {}))
+      ..setVolume(0)
+      ..play();
   }
 
   @override
@@ -126,8 +122,8 @@ class _ContentHeaderDesktopState extends State<_ContentHeaderDesktop> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => _videoPlayerController.value.isPlaying
-        ? _videoPlayerController.pause()
-        : _videoPlayerController.play(),
+          ? _videoPlayerController.pause()
+          : _videoPlayerController.play(),
       child: Stack(
         alignment: Alignment.bottomLeft,
         children: [
@@ -137,14 +133,14 @@ class _ContentHeaderDesktopState extends State<_ContentHeaderDesktop> {
             bottom: -1.0,
             child: AspectRatio(
               aspectRatio: _videoPlayerController.value.isInitialized
-              ? _videoPlayerController.value.aspectRatio
-              : 2.344,
+                  ? _videoPlayerController.value.aspectRatio
+                  : 2.344,
               child: _videoPlayerController.value.isInitialized
-                ? VideoPlayer(_videoPlayerController)
-                : Image.asset(
-                  widget.featureContent.imageUrl,
-                  fit: BoxFit.cover,
-                ),
+                  ? VideoPlayer(_videoPlayerController)
+                  : Image.asset(
+                      widget.featureContent.imageUrl,
+                      fit: BoxFit.cover,
+                    ),
             ),
           ),
           Container(
@@ -166,7 +162,9 @@ class _ContentHeaderDesktopState extends State<_ContentHeaderDesktop> {
               children: [
                 SizedBox(
                   width: 250.0,
-                  child: Image.asset(widget.featureContent.titleImageUrl,),
+                  child: Image.asset(
+                    widget.featureContent.titleImageUrl,
+                  ),
                 ),
                 const SizedBox(height: 15.0),
                 Text(
@@ -206,8 +204,8 @@ class _ContentHeaderDesktopState extends State<_ContentHeaderDesktop> {
                         iconSize: 30.0,
                         onPressed: () => setState(() {
                           _isMuted
-                            ? _videoPlayerController.setVolume(100)
-                            : _videoPlayerController.setVolume(0);
+                              ? _videoPlayerController.setVolume(100)
+                              : _videoPlayerController.setVolume(0);
                           _isMuted = _videoPlayerController.value.volume == 0;
                         }),
                       ),
@@ -243,8 +241,8 @@ class _PlayButton extends StatelessWidget {
       ),
       style: ElevatedButton.styleFrom(
         padding: !Responsive.isDesktop(context)
-          ? const EdgeInsets.fromLTRB(15.0, 5.0, 20.0, 5.0)
-          : const EdgeInsets.fromLTRB(25.0, 10.0, 30.0, 10.0),
+            ? const EdgeInsets.fromLTRB(15.0, 5.0, 20.0, 5.0)
+            : const EdgeInsets.fromLTRB(25.0, 10.0, 30.0, 10.0),
         backgroundColor: Colors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(0.0),

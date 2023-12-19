@@ -19,7 +19,7 @@ class CustomAppBar extends StatelessWidget {
         horizontal: 24.0,
       ),
       color:
-        Colors.black.withOpacity((scrollOffset / 350).clamp(0, 1).toDouble()),
+          Colors.black.withOpacity((scrollOffset / 350).clamp(0, 1).toDouble()),
       child: const Responsive(
         mobile: _CustomAppBarMobile(),
         desktop: _CustomAppBarDesktop(),
@@ -36,31 +36,20 @@ class _CustomAppBarMobile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Row(
-        children: [
-          Image.asset(Assets.netflixLogo0),
-          const SizedBox(width: 12.0),
-          Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                _AppBarButton(
-                  title: 'TV Shows',
-                  onTaps: () => print('TV Shows')
-                ),
-                _AppBarButton(
-                  title: 'Movies',
-                  onTaps: () => print('Movies')
-                ),
-                _AppBarButton(
-                  title: 'My list',
-                  onTaps: () => print('My list')
-                ),
-              ],
-            ),
-          )
-        ]
-      ),
+      child: Row(children: [
+        Image.asset(Assets.netflixLogo0),
+        const SizedBox(width: 12.0),
+        Expanded(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              _AppBarButton(title: 'TV Shows', onTaps: () => print('TV Shows')),
+              _AppBarButton(title: 'Movies', onTaps: () => print('Movies')),
+              _AppBarButton(title: 'My list', onTaps: () => print('My list')),
+            ],
+          ),
+        )
+      ]),
     );
   }
 }
@@ -73,80 +62,54 @@ class _CustomAppBarDesktop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Row(
-        children: [
-          Image.asset(Assets.netflixLogo1),
-          const SizedBox(width: 12.0),
-          Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                _AppBarButton(
-                  title: 'Home',
-                  onTaps: () => print('Home')
-                ),
-                _AppBarButton(
-                  title: 'TV Shows',
-                  onTaps: () => print('TV Shows')
-                ),
-                _AppBarButton(
-                  title: 'Movies',
-                  onTaps: () => print('Movies')
-                ),
-                _AppBarButton(
-                  title: 'Latest',
-                  onTaps: () => print('Latest')
-                ),
-                _AppBarButton(
-                  title: 'My list',
-                  onTaps: () => print('My list')
-                ),
-              ],
-            ),
+      child: Row(children: [
+        Image.asset(Assets.netflixLogo1),
+        const SizedBox(width: 12.0),
+        Expanded(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              _AppBarButton(title: 'Home', onTaps: () => print('Home')),
+              _AppBarButton(title: 'TV Shows', onTaps: () => print('TV Shows')),
+              _AppBarButton(title: 'Movies', onTaps: () => print('Movies')),
+              _AppBarButton(title: 'Latest', onTaps: () => print('Latest')),
+              _AppBarButton(title: 'My list', onTaps: () => print('My list')),
+            ],
           ),
-          const Spacer(),
-          Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                IconButton(
-                  padding: EdgeInsets.zero,
-                  icon: const Icon(Icons.search),
-                  iconSize: 28.0,
-                  color: Colors.white,
-                  onPressed: () => print('Search'),
-                ),
-                _AppBarButton(
-                  title: 'KIDS',
-                  onTaps: () => print('KIDS')
-                ),
-                _AppBarButton(
-                  title: 'DVD',
-                  onTaps: () => print('DVD')
-                ),
-                _AppBarButton(
-                  title: 'Movies',
-                  onTaps: () => print('Movies')
-                ),
-                IconButton(
-                  padding: EdgeInsets.zero,
-                  icon: const Icon(Icons.card_giftcard),
-                  iconSize: 28.0,
-                  color: Colors.white,
-                  onPressed: () => print('Gift'),
-                ),
-                IconButton(
-                  padding: EdgeInsets.zero,
-                  icon: const Icon(Icons.notifications),
-                  iconSize: 28.0,
-                  color: Colors.white,
-                  onPressed: () => print('Notifications'),
-                ),
-              ],
-            ),
-          )
-        ]
-      ),
+        ),
+        const Spacer(),
+        Expanded(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              IconButton(
+                padding: EdgeInsets.zero,
+                icon: const Icon(Icons.search),
+                iconSize: 28.0,
+                color: Colors.white,
+                onPressed: () => print('Search'),
+              ),
+              _AppBarButton(title: 'KIDS', onTaps: () => print('KIDS')),
+              _AppBarButton(title: 'DVD', onTaps: () => print('DVD')),
+              _AppBarButton(title: 'Movies', onTaps: () => print('Movies')),
+              IconButton(
+                padding: EdgeInsets.zero,
+                icon: const Icon(Icons.card_giftcard),
+                iconSize: 28.0,
+                color: Colors.white,
+                onPressed: () => print('Gift'),
+              ),
+              IconButton(
+                padding: EdgeInsets.zero,
+                icon: const Icon(Icons.notifications),
+                iconSize: 28.0,
+                color: Colors.white,
+                onPressed: () => print('Notifications'),
+              ),
+            ],
+          ),
+        )
+      ]),
     );
   }
 }

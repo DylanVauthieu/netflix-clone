@@ -17,9 +17,7 @@ class Content {
     this.color = Colors.transparent,
   });
 
-
   factory Content.fromJson(Map<String, dynamic> json) {
-
     print(json);
 
     return Content(
