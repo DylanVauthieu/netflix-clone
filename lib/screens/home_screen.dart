@@ -7,7 +7,6 @@ import 'package:netflix_clone/widgets/widgets.dart';
 
 import '../models/content_model.dart';
 
-
 class HomeScreen extends StatefulWidget {
   const HomeScreen({
     Key? key,
@@ -24,8 +23,9 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     _scrollController = ScrollController()
       ..addListener(() {
-        BlocProvider.of<AppBarCubit>(context).setOffset(_scrollController.offset);
-    });
+        BlocProvider.of<AppBarCubit>(context)
+            .setOffset(_scrollController.offset);
+      });
     super.initState();
   }
 
@@ -45,7 +45,8 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Colors.grey[850],
         child: const Icon(
           Icons.cast,
-          color: Colors.white,),
+          color: Colors.white,
+        ),
         onPressed: () => print('Cast'),
       ),
       appBar: PreferredSize(
@@ -62,79 +63,105 @@ class _HomeScreenState extends State<HomeScreen> {
           const SliverToBoxAdapter(
             child: ContentHeader(featureContent: sintelContent),
           ),
-          const SliverToBoxAdapter(
-            child: Preview(
-              key: PageStorageKey('previews'),
-              title: 'Previews',
-              contentList: previews,
-            ),
-          ),
-          
           StreamBuilder(
-            stream: FirebaseFirestore.instance.collection('previews').snapshots(),
-            builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              if (snapshot.connectionState == ConnectionState.active) {
-                
-                List<Content> content = List.generate(snapshot.data!.docs.length, (index) => Content.fromJson(snapshot.data!.docs[index].data() as Map<String, dynamic>) );
-
-              
-                return SliverToBoxAdapter(
-              child: ContentList(
-                key: const PageStorageKey('my list'),
-                title: 'My List',
-                contentList: content,
-              ),
-            );
+              stream:
+                  FirebaseFirestore.instance.collection('previews').snapshots(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  if (snapshot.connectionState == ConnectionState.active) {
+                    List<Content> content = List.generate(
+                        snapshot.data!.docs.length,
+                        (index) => Content.fromJson(
+                            snapshot.data!.docs[index].data()));
+                    return SliverToBoxAdapter(
+                      child: Preview(
+                        key: const PageStorageKey('previews'),
+                        title: 'previews',
+                        contentList: content,
+                      ),
+                    );
+                  } else {
+                    return const SliverToBoxAdapter(child: SizedBox());
+                  }
                 } else {
-                  return SliverToBoxAdapter(
-              child: SizedBox());
+                  return const SliverToBoxAdapter(child: SizedBox());
                 }
-              } else {
-                return SliverToBoxAdapter(
-              child:SizedBox());
-              }
-          }),
+              }),
           StreamBuilder(
-            stream: FirebaseFirestore.instance.collection('content').snapshots(),
-            builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              if (snapshot.connectionState == ConnectionState.active) {
-                
-                List<Content> content = List.generate(snapshot.data!.docs.length, (index) => Content.fromJson(snapshot.data!.docs[index].data() as Map<String, dynamic>) );
-
-              
-                return SliverToBoxAdapter(
-              child: ContentList(
-                key: const PageStorageKey('my list'),
-                title: 'My List',
-                contentList: content,
-              ),
-            );
+              stream:
+                  FirebaseFirestore.instance.collection('myList').snapshots(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  if (snapshot.connectionState == ConnectionState.active) {
+                    List<Content> content = List.generate(
+                        snapshot.data!.docs.length,
+                        (index) => Content.fromJson(
+                            snapshot.data!.docs[index].data()));
+                    return SliverToBoxAdapter(
+                      child: ContentList(
+                        key: const PageStorageKey('my list'),
+                        title: 'My List',
+                        contentList: content,
+                      ),
+                    );
+                  } else {
+                    return const SliverToBoxAdapter(child: SizedBox());
+                  }
                 } else {
-                  return SliverToBoxAdapter(
-              child: SizedBox());
+                  return const SliverToBoxAdapter(child: SizedBox());
                 }
-              } else {
-                return SliverToBoxAdapter(
-              child:SizedBox());
-              }
-          }),
-          const SliverToBoxAdapter(
-            child: ContentList(
-              key: PageStorageKey('Netflix Originals'),
-              title: 'Netflix Originals',
-              contentList: originals,
-              isOriginals: true,
-            ),
-          ),
-          const SliverToBoxAdapter(
-            child: ContentList(
-              key: PageStorageKey('Trending'),
-              title: 'Trending',
-              contentList: trending,
-            ),
-          ),
+              }),
+          StreamBuilder(
+              stream: FirebaseFirestore.instance
+                  .collection('originals')
+                  .snapshots(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  if (snapshot.connectionState == ConnectionState.active) {
+                    List<Content> content = List.generate(
+                        snapshot.data!.docs.length,
+                        (index) => Content.fromJson(
+                            snapshot.data!.docs[index].data()));
+                    return SliverToBoxAdapter(
+                      child: ContentList(
+                        key: const PageStorageKey('Netflix Originals'),
+                        title: 'Netflix Originals',
+                        contentList: content,
+                        isOriginals: true,
+                      ),
+                    );
+                  } else {
+                    return const SliverToBoxAdapter(child: SizedBox());
+                  }
+                } else {
+                  return const SliverToBoxAdapter(child: SizedBox());
+                }
+              }),
+          StreamBuilder(
+              stream: FirebaseFirestore.instance
+                  .collection('originals')
+                  .snapshots(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  if (snapshot.connectionState == ConnectionState.active) {
+                    List<Content> content = List.generate(
+                        snapshot.data!.docs.length,
+                        (index) => Content.fromJson(
+                            snapshot.data!.docs[index].data()));
+                    return SliverToBoxAdapter(
+                      child: ContentList(
+                        key: const PageStorageKey('Trending'),
+                        title: 'Trending',
+                        contentList: content,
+                      ),
+                    );
+                  } else {
+                    return const SliverToBoxAdapter(child: SizedBox());
+                  }
+                } else {
+                  return const SliverToBoxAdapter(child: SizedBox());
+                }
+              }),
         ],
       ),
     );
