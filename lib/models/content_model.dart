@@ -16,4 +16,19 @@ class Content {
     this.description = 'null',
     this.color = Colors.transparent,
   });
+
+
+  factory Content.fromJson(Map<String, dynamic> json) {
+
+    print(json);
+
+    return Content(
+      name: json['name'],
+      imageUrl: json['imageurl'],
+      description: json['description'],
+      titleImageUrl: json['titleimageurl'],
+      videoUrl: json['videourl'],
+      color: Color(json['color']),
+    );
+  }
 }
