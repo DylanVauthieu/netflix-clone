@@ -109,7 +109,8 @@ class _ContentHeaderDesktopState extends State<_ContentHeaderDesktop> {
     )
       ..initialize().then((_) => setState(() {}))
       ..setVolume(0)
-      ..play();
+      ..play()
+      ..setLooping(true);
   }
 
   @override

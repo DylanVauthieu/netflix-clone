@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:netflix_clone/assets.dart';
+import 'package:netflix_clone/screens/screens.dart';
 import 'package:netflix_clone/widgets/widgets.dart';
 
 class CustomAppBar extends StatelessWidget {
@@ -73,7 +74,12 @@ class _CustomAppBarDesktop extends StatelessWidget {
               _AppBarButton(title: 'TV Shows', onTaps: () => print('TV Shows')),
               _AppBarButton(title: 'Movies', onTaps: () => print('Movies')),
               _AppBarButton(title: 'Latest', onTaps: () => print('Latest')),
-              _AppBarButton(title: 'My list', onTaps: () => print('My list')),
+              _AppBarButton(title: 'My list', onTaps: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const DisplayContent()),
+                );
+              },),
             ],
           ),
         ),
