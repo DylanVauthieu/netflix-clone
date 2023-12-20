@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netflix_clone/screens/home_screen.dart';
 import 'package:netflix_clone/widgets/widgets.dart';
-import '../cubits/cubits.dart';
 
 class NavScreen extends StatefulWidget {
-  const NavScreen({super.key});
+  const NavScreen({
+    Key? key
+  }) : super(key: key);
 
   @override
   State<NavScreen> createState() => _NavScreenState();
 }
 
 class _NavScreenState extends State<NavScreen> {
-  final List<Widget> _screens = [
-    const HomeScreen(key: PageStorageKey('HomeScreen')),
-    const Scaffold(),
-    const Scaffold(),
-    const Scaffold(),
-    const Scaffold(),
+  final List<Widget> _screens = const [
+    HomeScreen(key: PageStorageKey('HomeScreen')),
+    Scaffold(),
+    Scaffold(),
+    Scaffold(),
+    Scaffold(),
   ];
 
   final Map<String, IconData> _icons = const {
@@ -33,8 +33,7 @@ class _NavScreenState extends State<NavScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocProvider<AppBarCubit>(
-          create: (_) => AppBarCubit(), child: _screens[_currentIndex]),
+      body: _screens[_currentIndex],
       bottomNavigationBar: !Responsive.isDesktop(context)
           ? BottomNavigationBar(
               type: BottomNavigationBarType.fixed,
@@ -59,3 +58,4 @@ class _NavScreenState extends State<NavScreen> {
     );
   }
 }
+

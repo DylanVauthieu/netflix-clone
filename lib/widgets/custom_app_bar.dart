@@ -70,7 +70,16 @@ class _CustomAppBarDesktop extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              _AppBarButton(title: 'Home', onTaps: () => print('Home')),
+              _AppBarButton(
+                title: 'Home',
+                onTaps: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const HomeScreen()),
+                  );
+                },
+              ),
               _AppBarButton(title: 'TV Shows', onTaps: () => print('TV Shows')),
               _AppBarButton(title: 'Movies', onTaps: () => print('Movies')),
               _AppBarButton(title: 'Latest', onTaps: () => print('Latest')),
@@ -80,11 +89,21 @@ class _CustomAppBarDesktop extends StatelessWidget {
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const DisplayContent()),
+                        builder: (context) => const DisplayCatalog()),
                   );
                 },
               ),
-            ],   
+              _AppBarButton(
+                title: 'Catalog',
+                onTaps: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const DisplayCatalog()),
+                  );
+                },
+              ),
+            ],
           ),
         ),
         const Spacer(),

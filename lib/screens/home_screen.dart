@@ -64,29 +64,29 @@ class _HomeScreenState extends State<HomeScreen> {
             child: ContentHeader(featureContent: sintelContent),
           ),
           StreamBuilder(
-              stream:
-                  FirebaseFirestore.instance.collection('previews').snapshots(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  if (snapshot.connectionState == ConnectionState.active) {
-                    List<Content> content = List.generate(
-                        snapshot.data!.docs.length,
-                        (index) => Content.fromJson(
-                            snapshot.data!.docs[index].data()));
-                    return SliverToBoxAdapter(
-                      child: Preview(
-                        key: const PageStorageKey('previews'),
-                        title: 'Previews',
-                        contentList: content,
-                      ),
-                    );
-                  } else {
-                    return const SliverToBoxAdapter(child: SizedBox());
-                  }
+            stream: FirebaseFirestore.instance.collection('previews').snapshots(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                if (snapshot.connectionState == ConnectionState.active) {
+                  List<Content> content = List.generate(
+                    snapshot.data!.docs.length,
+                    (index) => Content.fromJson(snapshot.data!.docs[index].data()),
+                  );
+                  return SliverToBoxAdapter(
+                    child: Preview(
+                      key: const PageStorageKey('previews'),
+                      title: 'Previews',
+                      contentList: content,
+                    ),
+                  );
                 } else {
                   return const SliverToBoxAdapter(child: SizedBox());
                 }
-              }),
+              } else {
+                return const SliverToBoxAdapter(child: SizedBox());
+              }
+            },
+          ),
           StreamBuilder(
               stream:
                   FirebaseFirestore.instance.collection('myList').snapshots(),
@@ -110,8 +110,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 } else {
                   return const SliverToBoxAdapter(child: SizedBox());
                 }
-              }),
-          StreamBuilder(
+              }
+            ),
+            StreamBuilder(
               stream: FirebaseFirestore.instance
                   .collection('originals')
                   .snapshots(),
@@ -136,8 +137,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 } else {
                   return const SliverToBoxAdapter(child: SizedBox());
                 }
-              }),
-          StreamBuilder(
+              }
+            ),
+            StreamBuilder(
               stream:
                   FirebaseFirestore.instance.collection('trending').snapshots(),
               builder: (context, snapshot) {
@@ -160,7 +162,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 } else {
                   return const SliverToBoxAdapter(child: SizedBox());
                 }
-              }),
+              }
+            ),
         ],
       ),
     );
