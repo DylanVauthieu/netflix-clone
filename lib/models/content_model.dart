@@ -18,7 +18,6 @@ class Content {
   });
 
   factory Content.fromJson(Map<String, dynamic> json) {
-    print(json);
 
     return Content(
       name: json['name'],

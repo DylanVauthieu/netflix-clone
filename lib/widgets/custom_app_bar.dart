@@ -74,13 +74,17 @@ class _CustomAppBarDesktop extends StatelessWidget {
               _AppBarButton(title: 'TV Shows', onTaps: () => print('TV Shows')),
               _AppBarButton(title: 'Movies', onTaps: () => print('Movies')),
               _AppBarButton(title: 'Latest', onTaps: () => print('Latest')),
-              _AppBarButton(title: 'My list', onTaps: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const DisplayContent()),
-                );
-              },),
-            ],
+              _AppBarButton(
+                title: 'My list',
+                onTaps: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const DisplayContent()),
+                  );
+                },
+              ),
+            ],   
           ),
         ),
         const Spacer(),

@@ -39,7 +39,7 @@ class _ContentHeaderMobile extends StatelessWidget {
           height: 500.0,
           decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage(featureContent.imageUrl),
+                  image: NetworkImage(featureContent.imageUrl),
                   fit: BoxFit.cover)),
         ),
         Container(
@@ -56,7 +56,7 @@ class _ContentHeaderMobile extends StatelessWidget {
           bottom: 110.0,
           child: SizedBox(
             width: 250.0,
-            child: Image.asset(featureContent.titleImageUrl),
+            child: Image.network(featureContent.titleImageUrl),
           ),
         ),
         Positioned(
@@ -115,8 +115,8 @@ class _ContentHeaderDesktopState extends State<_ContentHeaderDesktop> {
 
   @override
   void dispose() {
-    _videoPlayerController.dispose();
     super.dispose();
+    _videoPlayerController.dispose();
   }
 
   @override
@@ -138,7 +138,7 @@ class _ContentHeaderDesktopState extends State<_ContentHeaderDesktop> {
                   : 2.344,
               child: _videoPlayerController.value.isInitialized
                   ? VideoPlayer(_videoPlayerController)
-                  : Image.asset(
+                  : Image.network(
                       widget.featureContent.imageUrl,
                       fit: BoxFit.cover,
                     ),
@@ -163,7 +163,7 @@ class _ContentHeaderDesktopState extends State<_ContentHeaderDesktop> {
               children: [
                 SizedBox(
                   width: 250.0,
-                  child: Image.asset(
+                  child: Image.network(
                     widget.featureContent.titleImageUrl,
                   ),
                 ),
@@ -220,7 +220,6 @@ class _ContentHeaderDesktopState extends State<_ContentHeaderDesktop> {
     );
   }
 }
-
 class _PlayButton extends StatelessWidget {
   final String title;
   final IconData iconname;

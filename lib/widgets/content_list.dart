@@ -50,7 +50,7 @@ class ContentList extends StatelessWidget {
                       width: isOriginals ? 350.0 : 130.0,
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage(content.imageUrl),
+                          image: NetworkImage(content.imageUrl),
                           fit: BoxFit.cover,
                         ),
                       ),

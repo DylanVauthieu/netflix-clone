@@ -112,7 +112,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 }
               }),
           StreamBuilder(
-              stream: FirebaseFirestore.instance.collection('originals').snapshots(),
+              stream: FirebaseFirestore.instance
+                  .collection('originals')
+                  .snapshots(),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   if (snapshot.connectionState == ConnectionState.active) {
@@ -136,7 +138,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 }
               }),
           StreamBuilder(
-              stream: FirebaseFirestore.instance.collection('trending').snapshots(),
+              stream:
+                  FirebaseFirestore.instance.collection('trending').snapshots(),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   if (snapshot.connectionState == ConnectionState.active) {
