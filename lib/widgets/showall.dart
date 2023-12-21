@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_clone/models/content_model.dart';
+import 'package:netflix_clone/screens/screens.dart';
 
 class ShowAll extends StatelessWidget {
   final String title;
@@ -46,7 +47,16 @@ class ShowAll extends StatelessWidget {
                   final Content content = contentList[index];
 
                   return GestureDetector(
-                    onTap: () => {print(content.name)},
+                    onTap: () => {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => DisplayContent(
+                            contentInfo: content,
+                          ),
+                        ),
+                      )
+                    },
                     child: Container(
                       margin: const EdgeInsets.symmetric(horizontal: 3.0, vertical: 3.0),
                         decoration: BoxDecoration(

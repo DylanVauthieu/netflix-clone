@@ -5,3 +5,4 @@ export 'previews.dart';
 export 'content_list.dart';
 export 'responsive.dart';
 export 'showall.dart';
+export 'show_content.dart';
