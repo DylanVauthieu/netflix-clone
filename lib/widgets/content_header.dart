@@ -220,6 +220,7 @@ class _ContentHeaderDesktopState extends State<_ContentHeaderDesktop> {
     );
   }
 }
+
 class _PlayButton extends StatelessWidget {
   final String title;
   final IconData iconname;
