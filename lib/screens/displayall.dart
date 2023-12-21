@@ -43,7 +43,7 @@ class _DisplayCatalogState extends State<DisplayCatalog> {
         preferredSize: Size(screenSize.width, 50.0),
         child: BlocBuilder<AppBarCubit, double>(
           builder: (context, scrollOffset) {
-            return CustomAppBar(scrollOffset: scrollOffset);
+            return const CustomAppBar();
           },
         ),
       ),

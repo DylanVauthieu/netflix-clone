@@ -9,7 +9,7 @@ class CustomAppBar extends StatelessWidget {
 
   const CustomAppBar({
     Key? key,
-    this.scrollOffset = 0.0,
+    this.scrollOffset = 350.0,
   }) : super(key: key);
 
   @override
